@@ -1,0 +1,78 @@
+.head {
+	position: absolute;
+	width: 100%;
+	height: 50px;
+
+
+	text-align: center;
+	line-height: 50px;
+}
+
+.santian {
+	float: left;
+	width: 90%;
+	height: 190px;
+	background: #000000;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin-top: 30px;
+	margin-left: 5%;
+	border-radius:8px ;
+}
+.shenghuojianyi {
+	float: left;
+	width: 90%;
+	height: 310px;
+	background: #000000;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin-top: 30px;
+	margin-left: 5%;
+	margin-bottom: 20px;
+	border-radius:8px ;
+	
+}
+.shushidu{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 20px;
+}
+
+.santian ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+.santian ul li:nth-child(1){
+	width: 30%;
+	
+}
+.santian ul li:nth-child(2){
+	margin-left: 10px;
+	width: 25%;
+	
+}
+.santian ul li:nth-child(3){
+	width: 20%;
+	
+}
+.santian ul li:nth-child(4){
+	width: 20%;
+	
+}
+
+.santian ul li {
+	color: white;
+	float: left;
+	width: 25%;
+	margin-top: 15px;
+}
+.icon-set{
+	width: 50px;
+	height: 50px;
+
+	position: absolute;
+
+	margin-left: 80%;
+	margin-bottom: 10px;
+}

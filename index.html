@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.poppicker.css" />
+
+		<script src="js/mui.min.js"></script>
+
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<style type="text/css">
+			body {
+				background: url(img/12.jpeg);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+			}
+			
+			#div {
+				width: 0px;
+				height: 0px;
+				background: red;
+				position: fixed;
+				top: 70%;
+				left: 50%;
+			}
+			
+			.mui-popover .mui-popover-arrow:after {
+				width: 0px;
+			}
+			
+			.main {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				float: left;
+			}
+			
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+
+	<body ng-app="myApp">
+		<div class="main" ng-controller="myCtrl as aaa">
+			<div class="mui-content">
+				<a href="change-city"><span class="mui-icon mui-icon-bars" style="color: white; position: absolute; margin-top: 10px; margin-left: 20px;"></span></a>
+
+			</div>
+
+			<div class="head">
+				<a ng-bind="aaa.weacher-city" id="city" style="color: white; font-size: 1.5em; text-align: center; margin-right: auto; margin-left: auto;">九江</a>
+
+			</div>
+			<div style="width: 100%; height: 50px;text-align: right; line-height: 50px; color: white; float: left;">
+				<a style="text-align: right; color: white; font-size: 1.2em; margin-right: 20px;" id="loc">更新于07:45</a>
+
+			</div>
+			<div class="" style="width: 100%; float: left; text-align: right; margin-top: 50px; padding-right: 20px;">
+				<p style="color: white; font-size: 4em; text-align: right;" id="tmp">12℃</p>
+			</div>
+			<div class="" style="width: 100%; float: left; text-align: right; margin-top: 30px; padding-right: 20px;">
+				<p style="color: white; font-size: 2em; text-align: right;" id="cond_txt">晴</p>
+			</div>
+			<div class="santian">
+				<div class="" style=" margin-top: 20px;  font-size: 1.5em; margin-left: 15px;">
+					<p style="color: white; font-size: 1em;">最近三天</p>
+				</div>
+				<ul id="date_1">
+					<li id="day1_date">2018-10-19</li>
+					<li id="day1_weacher">晴</li>
+					<li id="day1_tmp_max">17</li>
+					<li id="day1_tmp_min">10</li>
+				</ul>
+				<ul id="date_2">
+					<li id="day2_date">2018-10-20</li>
+					<li id="day2_weacher">晴转多云</li>
+					<li id="day2_tmp_max">18</li>
+					<li id="day2_tmp_min">12</li>
+				</ul>
+				<ul id="date_3">
+					<li id="day3_date">2018-10-21</li>
+					<li id="day3_weacher">多云转阴</li>
+					<li id="day3_tmp_max">19</li>
+					<li id="day3_tmp_min">15</li>
+				</ul>
+			</div>
+			<div class="santian">
+				<div class="" style=" margin-top: 20px;  font-size: 1.5em; margin-left: 15px;">
+					<a style="color: white; font-size: 1em;">空气质量</a>
+				</div>
+				<div class="" style="float: left;  width: 50%; height: 150px; position: relative; text-align: center; margin-top: 30px; ">
+					<p style="color: white; font-size: 3em;" id="aqi_123">54</p>
+					<a style="color: white;">AQI指数</a>
+				</div>
+				<div class="" style="float: left;  width: 50%; height: 190px; position: relative; text-align: center; margin-top: 30px; ">
+					<p style="color: white; font-size: 3em;" id="pm10_123">58</p>
+					<a style="color: white;">PM10指数</a>
+				</div>
+			</div>
+			<div class="shenghuojianyi">
+				<div class="" style=" margin-top: 20px;  font-size: 1.5em; margin-left: 15px;">
+					<a style="color: white;">生活建议</a>
+				</div>
+				<div class="shushidu">
+					<a style="color: white; font-size: 1em;" id="comf">舒适度：白天不太热也不太冷，风力不大，相信您在这样的天气条件下，应回感到比较清爽和舒适</a>
+				</div>
+				<div class="shushidu">
+					<a style="color: white; font-size: 1em;" id="cw">舒适度：白天不太热也不太冷，风力不大，相信您在这样的天气条件下，应回感到比较清爽和舒适</a>
+				</div>
+				<div class="shushidu">
+					<a style="color: white; font-size: 1em;" id="trav ">舒适度：白天不太热也不太冷，风力不大，相信您在这样的天气条件下，应回感到比较清爽和舒适</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+		<script src="js/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			var app = angular.module('myApp', []);
+			app.controller('myCtrl', ['$http', function($http) {
+				var self = this;
+
+				$http({
+					method: "GET",
+					url: "https://free-api.heweather.com/s6/weather/forecast?location=九江&key=8f585a414a844d70a41f1dbf367118ac"
+
+				}).then(function success(success) {
+
+					//									console.log("success:" + success.data.HeWeather6[0].basic.location);
+
+					$("#city").html(success.data.HeWeather6[0].basic.location);
+
+				});
+			}]);
+
+			var jason_city = "";
+			var a = "";
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					/**
+					 * 获取对象属性的值
+					 * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+					 * @param {Object} obj 对象
+					 * @param {String} param 属性名
+					 */
+					var _getParam = function(obj, param) {
+						return obj[param] || '';
+					};
+
+					//-----------------------------------------
+					//					//级联示例
+					var cityPicker3 = new $.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('city');
+					var cityResult3 = doc.getElementById('cityResult3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							//							cityResult3.innerText = "你选择的城市是:" + _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
+							//返回 false 可以阻止选择框的关闭
+							//							return false;
+
+							a = _getParam(items[2], 'text');
+							loadData_1(a);
+
+							mui.ajax('https://free-api.heweather.com/s6/weather/forecast?location=' + a + '&key=8f585a414a844d70a41f1dbf367118ac', {
+								dataType: 'json', //服务器返回json格式数据
+								type: 'get', //HTTP请求类型
+								timeout: 10000, //超时时间设置为10秒；
+								success: function(data) {
+									loadData(data, 1);
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理；
+									console.log(type);
+								}
+							});
+							//查询实况天气
+							mui.ajax('https://free-api.heweather.com/s6/weather/now?location=' + a + '&key=8f585a414a844d70a41f1dbf367118ac', {
+								dataType: 'json', //服务器返回json格式数据
+								type: 'get', //HTTP请求类型
+								timeout: 10000, //超时时间设置为10秒；
+								success: function(data) {
+									loadData(data, 2);
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理；
+									console.log(type);
+								}
+							});
+							//查询空气质量实况  
+							
+								mui.ajax('https://free-api.heweather.com/s6/weather/lifestyle?location=' + a + '&key=8f585a414a844d70a41f1dbf367118ac', {
+								dataType: 'json', //服务器返回json格式数据
+								type: 'get', //HTTP请求类型
+								timeout: 10000, //超时时间设置为10秒；
+								success: function(data) {
+									loadData(data, 4);
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理；
+									console.log(type);
+								}
+							});
+
+							//----------------------------------------------------------------
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			function loadData_1(data) {
+				
+//				mui.ajax('https://free-api.heweather.com/s6/air/now', {
+//					data: {
+//						location: '九江',
+//						key: '8f585a414a844d70a41f1dbf367118ac'
+//					},
+//					dataType: 'json', //服务器返回json格式数据
+//					type: 'get', //HTTP请求类型
+//					timeout: 10000, //超时时间设置为10秒；
+//					success: function(data) {
+//						console.log("loadData_1" + JSON.stringify(data));
+//					},
+//					error: function(xhr, type, errorThrown) {
+//						//异常处理；
+//						console.log(type);
+//					}
+//				});
+
+				//				$("#aqi_123").html(data.HeWeather6[0].basic.cnty);
+				//				$("#pm10_123").html(data.HeWeather6[0].air_now_city.pm10);
+			}
+
+			function loadData(testData, flag) {
+				switch(flag) {
+					case 1:
+						$("#city").html(testData.HeWeather6[0].basic.location);
+						var l = testData.HeWeather6[0].update.loc;
+						var n = l.split(" ");
+						$("#loc").html("更新于：" + n[1]);
+						$("#day1_date").html(testData.HeWeather6[0].daily_forecast[0].date);
+						$("#day1_weacher").html(testData.HeWeather6[0].daily_forecast[0].cond_txt_d);
+						$("#day1_tmp_max").html(testData.HeWeather6[0].daily_forecast[0].tmp_max);
+						$("#day1_tmp_min").html(testData.HeWeather6[0].daily_forecast[0].tmp_min);
+						
+							$("#day2_date").html(testData.HeWeather6[0].daily_forecast[1].date);
+						$("#day2_weacher").html(testData.HeWeather6[0].daily_forecast[1].cond_txt_d);
+						$("#day2_tmp_max").html(testData.HeWeather6[0].daily_forecast[1].tmp_max);
+						$("#day2_tmp_min").html(testData.HeWeather6[0].daily_forecast[1].tmp_min);
+						
+							$("#day3_date").html(testData.HeWeather6[0].daily_forecast[2].date);
+						$("#day3_weacher").html(testData.HeWeather6[0].daily_forecast[2].cond_txt_d);
+						$("#day3_tmp_max").html(testData.HeWeather6[0].daily_forecast[2].tmp_max);
+						$("#day3_tmp_min").html(testData.HeWeather6[0].daily_forecast[2].tmp_min);
+						
+						
+
+						break;
+					case 2:
+						$("#tmp").html(testData.HeWeather6[0].now.tmp + "℃");
+						$("#cond_txt").html(testData.HeWeather6[0].now.cond_txt);
+
+						break;
+					case 3:
+						$("#aqi_123").html(testData.HeWeather6[0].air_now_city.aqi)
+						$("#pm10_123").html(testData.HeWeather6[0].air_now_city.pm10)
+						break;
+						case 4:
+						$("#comf").html("舒适度："+testData.HeWeather6[0].lifestyle[0].txt);
+						$("#cw").html("洗车建议："+testData.HeWeather6[0].lifestyle[6].txt);
+						$("#trav").html("旅游建议："+testData.HeWeather6[0].lifestyle[4].txt);
+						
+						
+
+						break;
+				}
+
+			}
+		</script>
+
+	</body>
+
+</html>
